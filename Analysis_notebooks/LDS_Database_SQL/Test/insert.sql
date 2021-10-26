@@ -1,0 +1,243 @@
+-- DROP DATABASE bluecore_test;
+
+CREATE DATABASE IF NOT EXISTS bluecore_test;
+USE bluecore_test;
+
+
+
+CREATE TABLE CONGVIEC (
+MADT INT(3) ZEROFILL NOT NULL,
+SOTT INT NOT NULL,
+TENCV VARCHAR(255),
+NGAYBD DATE,
+NGAYKT DATE,
+PRIMARY KEY (MADT, SOTT)
+);
+
+CREATE TABLE THAMGIADT (
+MAGV INT(3) ZEROFILL NOT NULL,
+MADT INT(3) ZEROFILL NOT NULL,
+STT INT NOT NULL,
+PHUCAP DECIMAL(10,1) NOT NULL,
+KETQUA VARCHAR(6),
+PRIMARY KEY(MAGV, MADT, STT)
+);
+
+CREATE TABLE NGUOITHAN (
+MAGV INT(3) ZEROFILL NOT NULL,
+TEN VARCHAR(255),
+NGSINH DATE, 
+PHAI VARCHAR(4),
+PRIMARY KEY (MAGV, TEN)
+);
+
+CREATE TABLE KHOA (
+MAKHOA VARCHAR(10) NOT NULL, 
+TENKHOA VARCHAR(255),
+NAMTL INT, 
+PHONG VARCHAR(3), 
+DIENTHOAI VARCHAR(10),
+TRUONGKHOA INT(3) ZEROFILL, 
+NGAYNHANCHUC DATE, 
+PRIMARY KEY (MAKHOA)
+);
+
+CREATE TABLE GIAOVIEN(
+MAGV INT(3) ZEROFILL NOT NULL AUTO_INCREMENT, 
+HOTEN VARCHAR(50),
+LUONG DECIMAL(10,1),
+PHAI VARCHAR(3),
+NGSINH DATE,
+DIACHI VARCHAR(255),
+GVQLCM INT(3) ZEROFILL,
+MABM VARCHAR(4),
+PRIMARY KEY (MAGV)
+);
+
+CREATE TABLE CHUDE(
+MACD VARCHAR(4) NOT NULL PRIMARY KEY,
+TENCD VARCHAR(255)
+);
+
+CREATE TABLE DETAI (
+MADT INT(3) ZEROFILL AUTO_INCREMENT,
+TENDT VARCHAR(255),
+CAPQL VARCHAR(10),
+KINHPHI DECIMAL(10,1), 
+NGAYBD DATE,
+NGAYKT DATE,
+MACD VARCHAR(4),
+GVCNDT INT(3) ZEROFILL,
+PRIMARY KEY (MADT)
+);
+
+CREATE TABLE BOMON (
+MABM VARCHAR(4) NOT NULL,
+TENBM VARCHAR(255),
+PHONG VARCHAR(3),
+DIENTHOAI VARCHAR(10),
+TRUONGBM INT(3) ZEROFILL,
+MAKHOA VARCHAR(4),
+NGAYNHANCHUC DATE,
+PRIMARY KEY (MABM)
+);
+
+CREATE TABLE GV_DT(
+MAGV INT(3) ZEROFILL,
+DIENTHOAI VARCHAR(10),
+PRIMARY KEY (MAGV, DIENTHOAI)
+);
+
+
+INSERT INTO CONGVIEC (MADT, SOTT, TENCV, NGAYBD, NGAYKT)
+VALUES 
+(1, 1, 'Khởi tạo và Lập kế hoạch', '2007-10-20', '2008-12-20'),
+(1, 2, 'Xác định yêu cầu', '2008-12-21', '2008-03-21'),
+(1, 3, 'Phân tích hệ thống', '2008-03-22', '2008-05-22'),
+(1, 4, 'Thiết kế hệ thống', '2008-05-23', '2008-06-23'),
+(1, 5, 'Cài đặt thử nghiệm', '2008-06-24', '2008-10-20'),
+(2, 1, 'Khởi tạo và Lập kế hoạch', '2009-05-11', '2009-07-10'),
+(2, 2, 'Xác định yêu cầu', '2009-07-11', '2009-10-11'),
+(2, 3, 'Phân tích hệ thống', '2009-10-12', '2010-03-22'),
+(2, 4, 'Thiết kế hệ thống', '2009-12-21', '2010-03-22'),
+(2, 5, 'Cài đặt thử nghiệm', '2010-03-23', '2010-05-10'),
+(6, 1, 'Lấy mẫu', '2006-10-20', '2007-02-20'),
+(6, 2, 'Nuôi cấy', '2007-02-21', '2008-08-21')
+;
+
+
+
+INSERT INTO THAMGIADT (MAGV, MADT, STT, PHUCAP, KETQUA)
+VALUES 
+(1, 2, 1, 0.0, NULL),
+(1, 2, 2, 2.0, NULL),
+(2, 1, 4, 2.0, 'Đạt'),
+(3, 1, 1, 1.0, 'Đạt'),
+(3, 1, 2, 0.0, 'Đạt'),
+(3, 1, 4, 1.0, 'Đạt'),
+(3, 2, 2, 0.0, NULL),
+(4, 6, 1, 0.0, 'Đạt'),
+(4, 6, 2, 0.0, 'Đạt'),
+(6, 6, 2, 1.5, 'Đạt'),
+(9, 2, 3, 0.5, NULL),
+(9, 2, 4, 1.5, NULL)
+;
+
+
+
+
+INSERT INTO NGUOITHAN (MAGV, TEN, NGSINH, PHAI)
+VALUES
+(1, 'Hùng', '1990-01-14', 'Nam'),
+(1, 'Thủy', '1994-12-08', 'Nữ'),
+(3, 'Hà', '1998-09-03', 'Nữ'),
+(3, 'Thu', '1998-09-03', 'Nữ'),
+(7, 'Mai', '2003-03-26', 'Nữ'),
+(7, 'Vy', '2000-02-14', 'Nữ'),
+(8, 'Nam', '1991-05-06', 'Nam'),
+(9, 'An', '1996-08-19', 'Nam'),
+(10, 'Nguyệt', '2006-01-14', 'Nữ')
+;
+
+
+INSERT INTO KHOA (MAKHOA, TENKHOA, NAMTL, PHONG, DIENTHOAI, TRUONGKHOA, NGAYNHANCHUC)
+VALUES
+('CNTT', 'Công nghệ thông tin', '1995', 'B11', '0838123456', 2, '2005-02-20'),
+('HH', 'Hóa học', 1980, 'B41', '0838456456', 7, '2001-10-15'),
+('SH', 'Sinh học', 1980, 'B31', '0838454545', 4, '2000-10-11'),
+('VL', 'Vật lý', 1976, 'B21', '0838223223', 5, '2003-09-18')
+;
+
+
+INSERT INTO GIAOVIEN (HOTEN, LUONG, PHAI, NGSINH, DIACHI, GVQLCM, MABM)
+VALUES
+('Nguyễn Hoài An', 2000, 'Nam', '1973-02-15', '25/3 Lạc Long Quân, Q.10, TP HCM', null, 'MMT'),
+('Trần Trà Hương', 2500, 'Nữ', '1960-06-20', '125 Trần Hưng Đạo, Q.1, TP HCM', null, 'HTTT'),
+('Nguyễn Ngọc Ánh', 2200, 'Nữ', '1975-05-11', '12/21 Võ Văn Ngân, Thủ Đức, TP HCM', 2, 'HTTT'),
+('Trương Nam Sơn', 2300, 'Nam', '1959-06-20', '215 Lý Thường Kiệt, TP Biên Hòa', null, 'VS'),
+('Lý Hoàng Hà', 2500, 'Nam', '1954-10-23', '22/5 Nguyễn Xí, Q.Bình Thạnh, TP HCM', null, 'VLĐT'),
+('Trần Bạch Tuyết', 1500, 'Nữ', '1980-05-20', '127 Hùng Vương, TP Mỹ Tho', 4, 'VS'),
+('Nguyễn An Trung', 2100, 'Nam', '1976-06-05', '234 3/2, TP Biên Hòa', null, 'HPT'),
+('Trần Trung Hiếu', 1800, 'Nam', '1977-08-06', '22/11 Lý Thường Kiệt, TP Mỹ Tho', 7, 'HPT'),
+('Trần Hoàng Nam', 2000, 'Nam', '1975-11-22', '234 Trần Não, An Phú, TP HCM', 1, 'MMT'),
+('Phạm Nam Thanh', 1500, 'Nam', '1980-12-12', '221 Hùng Vương, Q.5, TP HCM', 7, 'HPT')
+;
+ 
+
+INSERT INTO CHUDE (MACD, TENCD)
+VALUES
+('NCPT', 'Nghiên cứu phát triển'),
+('QLGD', 'Quản lý giáo dục'),
+('ƯDCN', 'Ứng dụng công nghệ');
+
+
+INSERT INTO DETAI (TENDT, CAPQL, KINHPHI, NGAYBD, NGAYKT, MACD, GVCNDT)
+VALUES
+('HTTT quản lý các trường ĐH', 'ĐHQG', 20, '2007-10-20', '2008-10-20', 'QLGD', 2),
+('HTTT quản lý giáo vụ cho một Khoa', 'Trường', 20, '2000-10-12', '2001-10-12', 'QLGD', 2),
+('Nghiên cứu chế tạo sợi Nanô Platin', 'ĐHQG', 300, '2008-05-15', '2010-05-15', 'NCPT', 5),
+('Tạo vật liệu sinh học bằng màng ối người', 'Nhà nước', 100, '2007-01-01', '2009-12-31', 'NCPT', 4),
+('Ứng dụng hóa học xanh', 'Trường', 200, '2003-10-10', '2004-12-10', 'ƯDCN', 7),
+('Nghiên cứu tế bào gốc', 'Nhà nước', 4000, '2006-10-20', '2009-10-20', 'NCPT', 4),
+('HTTT quản lý thư viện ở cac trường ĐH', 'Trường', 20, '2009-05-10', '2010-05-10', 'QLGD', 1)
+;
+
+
+
+INSERT INTO BOMON(MABM, TENBM, PHONG, DIENTHOAI, TRUONGBM, MAKHOA, NGAYNHANCHUC)
+VALUES
+('CNTT', 'Công nghệ tri thức', 'B15', '0838126126', null, 'CNTT', null),
+('HHC', 'Hóa hữu cơ', 'B44', '838222222', null, 'HH', null),
+('HL', 'Hóa lý', 'B42', '0838878787', null, 'HH', null),
+('HPT', 'Hóa phân tích', 'B43','0838777777', 7, 'HH', '2007-10-15'),
+('HTTT', 'Hệ thống thông tin', 'B13', '0838125125', 2, 'CNTT', '2004-09-20'),
+('MMT', 'Mạng máy tính', 'B16', '0838676767', 1, 'CNTT', '2005-05-15'),
+('SH', 'Mạng máy tính', 'B33', '0838898989', null, 'SH', null),
+('VLĐT', 'Vật lý điện tử', 'B23', '0838234234', null, 'VL', null),
+('VLƯD', 'Vật lý ứng dụng', 'B24', '0838454545', 5, 'VL', '2006-02-18'),
+('VS', 'Vi sinh', 'B32', '0838909090', 4, 'SH', '2007-01-01')
+;
+
+
+
+INSERT INTO GV_DT(MAGV, DIENTHOAI)
+VALUES
+(1, '0838912112'),
+(1, '0903123123'),
+(2, '0912454545'),
+(3, '0838121212'),
+(3, '0903656565'),
+(3, '0937125125'),
+(6, '0937888888'),
+(8, '0653717171'),
+(8, '0913232323');
+
+ALTER TABLE THAMGIADT
+ADD FOREIGN KEY (MADT, STT) REFERENCES CONGVIEC(MADT, SOTT), 
+ADD FOREIGN KEY (MAGV) REFERENCES GIAOVIEN(MAGV);
+
+ALTER TABLE KHOA
+ADD FOREIGN KEY (TRUONGKHOA) REFERENCES GIAOVIEN(MAGV);
+
+ALTER TABLE CONGVIEC
+ADD FOREIGN KEY (MADT) REFERENCES DETAI(MADT);
+
+ALTER TABLE DETAI
+ADD FOREIGN KEY (MACD) REFERENCES CHUDE(MACD),
+ADD FOREIGN KEY (GVCNDT) REFERENCES GIAOVIEN(MAGV);
+
+ALTER TABLE BOMON
+ADD FOREIGN KEY (MAKHOA) REFERENCES KHOA(MAKHOA),
+ADD FOREIGN KEY (TRUONGBM) REFERENCES GIAOVIEN(MAGV);
+
+
+ALTER TABLE GV_DT
+ADD FOREIGN KEY (MAGV) REFERENCES GIAOVIEN(MAGV);
+
+ALTER TABLE NGUOITHAN
+ADD FOREIGN KEY (MAGV) REFERENCES GIAOVIEN(MAGV);
+
+ALTER TABLE GIAOVIEN
+ADD FOREIGN KEY (MABM) REFERENCES BOMON(MABM),
+ADD FOREIGN KEY (GVQLCM) REFERENCES GIAOVIEN(MAGV);
+
