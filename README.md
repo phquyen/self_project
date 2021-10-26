@@ -1,7 +1,8 @@
-# self_project
-# Analysis and visualization
-## Analysis
-- Data Science Certificate (progress: 6/8) [[Link](https://csc.edu.vn/data-science-machine-learning/Data-Science-Certificate_199)]
+
+# Analysis
+Data Science Certificate (progress: 6/8) [[Link](https://csc.edu.vn/data-science-machine-learning/Data-Science-Certificate_199)]
+
+Ourstanding works from the course: 
 
 - Course: Python [[Link](https://csc.edu.vn/lap-trinh-va-csdl/Python-for-Machine-Learning-Data-Science--Data-Visualization-Python-cho-may-hoc-Khoa-hoc-du-lieu-va-Truc-quan-hoa-du-lieu_191)]
         
@@ -14,7 +15,7 @@
 - Course Data Preprocessing and Analysis [[Link](https://csc.edu.vn/lap-trinh-va-csdl/Data-Pre-processing-and-Analysis_196)]
 
 
-## Visualization
+# Visualization
 - Tool: PowerBI
 
 - More methods will be coming soon !
