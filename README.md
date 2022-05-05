@@ -22,4 +22,4 @@ Ourstanding works from the course:
 - More methods will be coming soon !
 
 # Self projects
-## FIFA 22 FOOTBALL PLAYER RATINGS
+FIFA 22 FOOTBALL PLAYER RATINGS: [link](FIFA22/README.md)
