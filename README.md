@@ -1,6 +1,6 @@
 
 # Analysis
-Data Science Certificate (progress: 6/8) [[Link](https://csc.edu.vn/data-science-machine-learning/Data-Science-Certificate_199)]
+Data Science Certificate [[Link](https://csc.edu.vn/data-science-machine-learning/Data-Science-Certificate_199)]
 
 Ourstanding works from the course: 
 
@@ -13,9 +13,13 @@ Ourstanding works from the course:
     MySQL, Python MagicSQL and SQLLite.
 
 - Course Data Preprocessing and Analysis [[Link](https://csc.edu.vn/lap-trinh-va-csdl/Data-Pre-processing-and-Analysis_196)]
+- Machine learning with Python [[Link](https://csc.edu.vn/data-science-machine-learning/Machine-Learning-with-Python_197)]
 
 
 # Visualization
-- Tool: PowerBI
+- Tool: PowerBI, Data Studio
 
 - More methods will be coming soon !
+
+# Self projects
+## FIFA 22 FOOTBALL PLAYER RATINGS
